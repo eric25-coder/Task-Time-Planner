@@ -1,0 +1,6 @@
+{
+  "name": "TaskTime - Plan · Organise · Grow · Achieve",
+  "description": "An intelligent personal productivity, activity management, academic organisation, habit tracking and goal management application with pastel anime digital stationery aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
