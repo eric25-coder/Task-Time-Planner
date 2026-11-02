@@ -1,4 +1,4 @@
-```yaml
+
 name: Build TaskTime APK
 
 on:
@@ -57,4 +57,4 @@ jobs:
           name: TaskTime-APK
           path: android/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
-```
+
