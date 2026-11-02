@@ -135,6 +135,16 @@ export const TaskTimeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       const todayStr = getTodayStr();
 
       activitiesRef.current.forEach(act => {
+        // Streak reset if missed daily task
+        if (act.recurrence === 'daily' && act.lastCompletedDate && act.status === 'upcoming') {
+           const yesterday = new Date();
+           yesterday.setDate(yesterday.getDate() - 1);
+           const yesterdayStr = yesterday.toISOString().split('T')[0];
+           if (act.lastCompletedDate < yesterdayStr && act.streak && act.streak > 0) {
+               updateActivity(act.id, { streak: 0 });
+           }
+        }
+
         if (
           act.date === todayStr &&
           act.startTime === currentHourMinute &&
@@ -182,11 +192,43 @@ export const TaskTimeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       ...prev,
       activities: prev.activities.map(a => {
         if (a.id === id) {
-          const nextStatus = a.status === 'completed' ? 'upcoming' : 'completed';
+          const isDone = a.status === 'completed';
+          const nextStatus = isDone ? 'upcoming' : 'completed';
+          const today = getTodayStr();
+
+          // Streak logic for daily tasks
+          let newStreak = a.streak || 0;
+          let newBest = a.bestStreak || 0;
+          let lastCompleted = a.lastCompletedDate;
+
+          if (a.recurrence === 'daily') {
+            if (!isDone) {
+              // Completing
+              const yesterday = new Date();
+              yesterday.setDate(yesterday.getDate() - 1);
+              const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+              if (lastCompleted === yesterdayStr) {
+                newStreak++;
+              } else {
+                newStreak = 1;
+              }
+              if (newStreak > newBest) newBest = newStreak;
+              lastCompleted = today;
+            } else {
+              // Undoing
+              newStreak = 0;
+              lastCompleted = undefined;
+            }
+          }
+
           return {
             ...a,
             status: nextStatus,
-            completedAt: nextStatus === 'completed' ? new Date().toISOString() : undefined
+            completedAt: nextStatus === 'completed' ? new Date().toISOString() : undefined,
+            streak: newStreak,
+            bestStreak: newBest,
+            lastCompletedDate: lastCompleted
           };
         }
         return a;

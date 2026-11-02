@@ -1,4 +1,4 @@
-export type ThemeType = 'blossom' | 'sky' | 'nature';
+export type ThemeType = 'blossom' | 'sky' | 'nature' | 'peach' | 'mint' | 'lavender' | 'lemon' | 'berry' | 'ocean' | 'sunset' | 'forest' | 'skyline' | 'cottoncandy' | 'mocha' | 'grape' | 'sage' | 'sky_blue' | 'lilac' | 'apricot' | 'pistachio' | 'rose' | 'slate' | 'steel' | 'charcoal_mist' | 'navy_haze' | 'olive_dust';
 
 export type CategoryId = 
   | 'education' 
@@ -61,6 +61,9 @@ export interface ActivityItem {
   notes?: string;
   completedAt?: string;
   reminderFired?: boolean;
+  streak?: number;
+  bestStreak?: number;
+  lastCompletedDate?: string;
 }
 
 export type HabitFrequency = 'daily' | 'weekdays' | 'weekends' | 'custom';

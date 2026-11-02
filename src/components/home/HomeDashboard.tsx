@@ -6,7 +6,7 @@ import { AnimeMascot } from '../AnimeMascot';
 import { ASSETS } from '../../utils/assets';
 import { 
   Calendar as CalendarIcon, Plus, CheckCircle2, Circle, Clock, 
-  Sparkles, ChevronRight, RefreshCw, Heart, AlertCircle, ArrowRight, Flower2
+  Sparkles, ChevronRight, RefreshCw, Heart, AlertCircle, ArrowRight, Flower2, Flame
 } from 'lucide-react';
 
 export const HomeDashboard: React.FC = () => {
@@ -226,6 +226,11 @@ export const HomeDashboard: React.FC = () => {
                         <span className={`text-xs font-bold px-2 py-0.5 rounded-full`} style={{ backgroundColor: `${cat?.color || '#E88BB5'}20`, color: cat?.color || '#E88BB5' }}>
                           {cat?.name || 'General'}
                         </span>
+                        {act.recurrence === 'daily' && (
+                          <div className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500 text-white flex items-center gap-1 shadow-xs">
+                             <Flame className="w-3 h-3 text-orange-200" /> {act.streak || 0}
+                          </div>
+                        )}
                         <span className="text-[11px] font-semibold opacity-70 flex items-center gap-1">
                           <Clock className="w-3 h-3" /> {act.startTime} - {act.endTime}
                         </span>

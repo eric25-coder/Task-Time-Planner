@@ -5,7 +5,7 @@ import { AnimeMascot } from '../AnimeMascot';
 import { ASSETS } from '../../utils/assets';
 import { 
   Search, Filter, Plus, Calendar, Clock, CheckCircle2, Circle, 
-  Trash2, Edit, Target, Sparkles, Check
+  Trash2, Edit, Target, Sparkles, Check, Flame
 } from 'lucide-react';
 import { ActivityStatus, Priority, CategoryId } from '../../types';
 
@@ -205,6 +205,11 @@ export const ActivitiesScreen: React.FC = () => {
                       <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ backgroundColor: `${cat?.color || '#E88BB5'}20`, color: cat?.color || '#E88BB5' }}>
                         {cat?.name || 'General'}
                       </span>
+                      {act.recurrence === 'daily' && (
+                        <div className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 flex items-center gap-1">
+                           <Flame className="w-3 h-3" /> {act.streak || 0}d streak
+                        </div>
+                      )}
                       <span className="text-[11px] font-semibold opacity-70 flex items-center gap-1">
                         <Calendar className="w-3 h-3" /> {act.date}
                       </span>
