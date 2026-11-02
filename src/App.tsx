@@ -16,9 +16,27 @@ import { GoalsScreen } from './components/goals/GoalsScreen';
 import { ReportsScreen } from './components/reports/ReportsScreen';
 import { WorkspaceContainer } from './components/workspaces/WorkspaceContainer';
 
+import { App as CapApp } from '@capacitor/app';
+
 const MainAppContent: React.FC = () => {
-  const { onboardingCompleted, theme, activeTab, activeCategoryWorkspace } = useTaskTime();
+  const { onboardingCompleted, theme, activeTab, setActiveTab, activeCategoryWorkspace, setActiveCategoryWorkspace } = useTaskTime();
   const themeConfig = THEMES[theme];
+
+  React.useEffect(() => {
+    const listener = CapApp.addListener('backButton', () => {
+      if (activeCategoryWorkspace !== null) {
+        setActiveCategoryWorkspace(null);
+      } else if (activeTab !== 'home') {
+        setActiveTab('home');
+      } else {
+        CapApp.minimizeApp();
+      }
+    });
+
+    return () => {
+      listener.then(l => l.remove());
+    };
+  }, [activeCategoryWorkspace, activeTab, setActiveCategoryWorkspace, setActiveTab]);
 
   if (!onboardingCompleted) {
     return <Onboarding />;

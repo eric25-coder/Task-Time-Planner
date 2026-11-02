@@ -6,7 +6,7 @@ import { AnimeMascot } from '../AnimeMascot';
 import { ASSETS } from '../../utils/assets';
 import { 
   Calendar as CalendarIcon, Plus, CheckCircle2, Circle, Clock, 
-  Sparkles, ChevronRight, RefreshCw, Heart, AlertCircle, ArrowRight, Flower2, Flame
+  Sparkles, ChevronRight, RefreshCw, Heart, AlertCircle, ArrowRight, Flower2, Flame, Target
 } from 'lucide-react';
 
 export const HomeDashboard: React.FC = () => {
