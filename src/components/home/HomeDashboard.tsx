@@ -4,6 +4,7 @@ import { THEMES } from '../../utils/themeStyles';
 import { MOTIVATIONAL_QUOTES } from '../../data/quotes';
 import { AnimeMascot } from '../AnimeMascot';
 import { ASSETS } from '../../utils/assets';
+import { CategoryIcon } from '../../utils/categoryIcons';
 import { 
   Calendar as CalendarIcon, Plus, CheckCircle2, Circle, Clock, 
   Sparkles, ChevronRight, RefreshCw, Heart, AlertCircle, ArrowRight, Flower2, Flame, Target
@@ -127,7 +128,9 @@ export const HomeDashboard: React.FC = () => {
               className="flex-shrink-0 flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-white border shadow-xs hover:scale-102 transition-all"
               style={{ borderColor: themeConfig.border }}
             >
-              <span className="w-3 h-3 rounded-full" style={{ backgroundColor: cat.color }} />
+              <span className="p-1 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${cat.color}20`, color: cat.color }}>
+                <CategoryIcon iconName={cat.iconName} className="w-3.5 h-3.5" />
+              </span>
               <span className="text-xs font-bold" style={{ color: themeConfig.text }}>{cat.name}</span>
             </button>
           ))}
@@ -223,7 +226,8 @@ export const HomeDashboard: React.FC = () => {
                     </button>
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded-full`} style={{ backgroundColor: `${cat?.color || '#E88BB5'}20`, color: cat?.color || '#E88BB5' }}>
+                        <span className="text-xs font-bold px-2.5 py-0.5 rounded-full inline-flex items-center gap-1.5" style={{ backgroundColor: `${cat?.color || '#E88BB5'}20`, color: cat?.color || '#E88BB5' }}>
+                          <CategoryIcon iconName={cat?.iconName} className="w-3.5 h-3.5" />
                           {cat?.name || 'General'}
                         </span>
                         {act.recurrence === 'daily' && (

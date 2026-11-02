@@ -4,6 +4,7 @@ import { THEMES } from '../utils/themeStyles';
 import { ThemeType, CategoryId } from '../types';
 import { AnimeMascot } from './AnimeMascot';
 import { ASSETS } from '../utils/assets';
+import { CategoryIcon } from '../utils/categoryIcons';
 import { Sparkles, ArrowRight, ArrowLeft, Check, Heart, Star, BookOpen, Dumbbell, Briefcase, TrendingUp, Home, Users, Plane, CalendarCheck } from 'lucide-react';
 
 export const Onboarding: React.FC = () => {
@@ -30,20 +31,7 @@ export const Onboarding: React.FC = () => {
   const themeConfig = THEMES[selectedTheme];
 
   const getCategoryIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'GraduationCap': return <BookOpen className="w-5 h-5" />;
-      case 'HeartHandshake': return <Heart className="w-5 h-5" />;
-      case 'Dumbbell': return <Dumbbell className="w-5 h-5" />;
-      case 'Briefcase': return <Briefcase className="w-5 h-5" />;
-      case 'TrendingUp': return <TrendingUp className="w-5 h-5" />;
-      case 'Home': return <Home className="w-5 h-5" />;
-      case 'BookOpen': return <BookOpen className="w-5 h-5" />;
-      case 'Users': return <Users className="w-5 h-5" />;
-      case 'Sparkles': return <Sparkles className="w-5 h-5" />;
-      case 'Plane': return <Plane className="w-5 h-5" />;
-      case 'CalendarCheck': return <CalendarCheck className="w-5 h-5" />;
-      default: return <Star className="w-5 h-5" />;
-    }
+    return <CategoryIcon iconName={iconName} className="w-5 h-5" />;
   };
 
   return (

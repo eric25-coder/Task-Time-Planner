@@ -3,6 +3,7 @@ import { useTaskTime } from '../../context/TaskTimeContext';
 import { THEMES } from '../../utils/themeStyles';
 import { AnimeMascot } from '../AnimeMascot';
 import { ASSETS } from '../../utils/assets';
+import { CategoryIcon } from '../../utils/categoryIcons';
 import { 
   Search, Filter, Plus, Calendar, Clock, CheckCircle2, Circle, 
   Trash2, Edit, Target, Sparkles, Check, Flame
@@ -202,7 +203,8 @@ export const ActivitiesScreen: React.FC = () => {
                   </button>
                   <div className="space-y-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ backgroundColor: `${cat?.color || '#E88BB5'}20`, color: cat?.color || '#E88BB5' }}>
+                      <span className="text-xs font-bold px-2.5 py-0.5 rounded-full inline-flex items-center gap-1.5" style={{ backgroundColor: `${cat?.color || '#E88BB5'}20`, color: cat?.color || '#E88BB5' }}>
+                        <CategoryIcon iconName={cat?.iconName} className="w-3.5 h-3.5" />
                         {cat?.name || 'General'}
                       </span>
                       {act.recurrence === 'daily' && (

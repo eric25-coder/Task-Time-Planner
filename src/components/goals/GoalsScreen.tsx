@@ -3,6 +3,7 @@ import { useTaskTime } from '../../context/TaskTimeContext';
 import { THEMES } from '../../utils/themeStyles';
 import { AnimeMascot } from '../AnimeMascot';
 import { ASSETS } from '../../utils/assets';
+import { CategoryIcon } from '../../utils/categoryIcons';
 import { Target, Plus, CheckCircle2, Circle, Calendar, Sparkles, Trash2 } from 'lucide-react';
 import { CategoryId, Priority } from '../../types';
 
@@ -106,7 +107,8 @@ export const GoalsScreen: React.FC = () => {
                 <div className="flex items-start justify-between">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold px-2.5 py-0.5 rounded-full" style={{ backgroundColor: `${cat?.color || '#E88BB5'}20`, color: cat?.color || '#E88BB5' }}>
+                      <span className="text-xs font-bold px-2.5 py-0.5 rounded-full inline-flex items-center gap-1.5" style={{ backgroundColor: `${cat?.color || '#E88BB5'}20`, color: cat?.color || '#E88BB5' }}>
+                        <CategoryIcon iconName={cat?.iconName} className="w-3.5 h-3.5" />
                         {cat?.name || 'Goal'}
                       </span>
                       <span className="text-xs font-semibold opacity-70 flex items-center gap-1">

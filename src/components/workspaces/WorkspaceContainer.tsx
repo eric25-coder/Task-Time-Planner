@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTaskTime } from '../../context/TaskTimeContext';
 import { THEMES } from '../../utils/themeStyles';
 import { AnimeMascot } from '../AnimeMascot';
+import { CategoryIcon } from '../../utils/categoryIcons';
 import { 
   ArrowLeft, Plus, BookOpen, HeartHandshake, Dumbbell, Briefcase, 
   TrendingUp, Home, Users, Sparkles, Plane, CalendarCheck, CheckCircle2, Circle, Clock, Check
@@ -123,7 +124,7 @@ export const WorkspaceContainer: React.FC = () => {
       >
         <div className="space-y-2 text-center md:text-left z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 text-xs font-bold" style={{ color: category.color }}>
-            <Sparkles className="w-3.5 h-3.5" /> Workspace
+            <CategoryIcon iconName={category.iconName} className="w-4 h-4" /> Workspace
           </div>
           <h1 className="text-2xl md:text-3xl font-extrabold" style={{ color: themeConfig.text }}>
             {category.name} Workspace
